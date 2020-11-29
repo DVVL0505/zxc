@@ -3,63 +3,40 @@
 
 int main()
 {
+    int n, i, k = 0, l;
+    char *stroka;
+    stroka = (char*) calloc (n, sizeof (char));
     system("chcp 65001");
     system("cls");
-    int **mas;
-    int *sum;
-    int i, j, n;
-    printf("Введите порядок матрицы\n");
-    sum = (int *) calloc (3, sizeof (int));
+    printf("Введите число\n");
     scanf("%d", &n);
-    mas = (int **) calloc (n, sizeof (int *));
-    for(int i=0; i < n; i++)
+    printf("Введите строку\n");
+    fflush(stdin);
+    gets(stroka);
+    for (i = 0; stroka[i] != '\0'; i++)
     {
-    mas[i] = (int *) calloc (n, sizeof (int));
-    }
-    for (i = 0; i < 3; i++)
-    {
-        sum[i] = 0;
-    }
-    for(i = 0; i < n; i++)
-    {
-        for (j = 0; j < n; j++)
+        if (stroka[i] == ' ' || stroka[i] == ',')
         {
-            mas[i][j] = rand() % 200 + (-100);
+            if (((i - 1) - k) > (n - 1))
+            {
+                for (l = k; l < i; l++)
+                {
+                    printf("%c", stroka[l]);
+                }
+                printf(" ");
+            }
+            k = i + 1;
+
         }
     }
-    for(i = 0; i < n; i++)
+    if (((i - 1) - k) > (n - 1))
     {
-        if (mas[i][0] < 0)
+        for (l = k; l < i; l++)
         {
-            if (i == 0)
-            {
-                sum[1] += mas[i][i];
-                sum[2] += mas[i + 1][i];
-            }
-            else if (i == n - 1)
-            {
-                sum[1] += mas[i][i];
-                sum[0] += mas[i - 1][i];
-            }
-            else
-            {
-                sum[1] += mas[i][i];
-                sum[0] += mas[i - 1][i];
-                sum[2] += mas[i + 1][i];
-            }
+            printf("%c", stroka[l]);
         }
+        printf(" ");
     }
-    printf("\n");
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < n; j++)
-        {
-            printf("%d\t", mas[i][j]);
-        }
-        printf("\n");
-    }
-    printf("Сумма над главной диагональю равна %d\nСумма на главной диагонали ранва %d\nСумма под главной диагональю равна %d\n", sum[0], sum[1], sum[2]);
-    free(mas);
-    free(sum);
+    free(stroka);
     return 0;
 }
