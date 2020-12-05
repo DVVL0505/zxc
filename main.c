@@ -5,7 +5,7 @@ int main()
 {
     int n, i, k = 0, l;
     char *stroka;
-    stroka = (char*) calloc (n, sizeof (char));
+    stroka = (char*) calloc (100, sizeof (char));
     system("chcp 65001");
     system("cls");
     printf("Введите число\n");
