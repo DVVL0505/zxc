@@ -17,7 +17,7 @@ int main()
     {
         if (stroka[i] == ' ' || stroka[i] == ',')
         {
-            if (((i - 1) - k) > (n - 1))
+            if ((i - k) > n)
             {
                 for (l = k; l < i; l++)
                 {
