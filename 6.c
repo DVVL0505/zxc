@@ -56,5 +56,7 @@ int main()
         }
     }
     printf("%d\n%d\n%d", sum[0], sum[1], sum[2]);
+    free(sum);
+    free(matrica);
     return 0;
 }
